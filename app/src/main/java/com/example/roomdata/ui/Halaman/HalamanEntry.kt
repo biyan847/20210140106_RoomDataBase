@@ -22,12 +22,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomdata.R
 import com.example.roomdata.model.DetailSiswa
 import com.example.roomdata.model.EntryViewModel
 import com.example.roomdata.model.PenyediaViewModel
 import com.example.roomdata.model.UIStateSiswa
 import com.example.roomdata.navigasi.DestinasiNavigasi
+import com.example.roomdata.navigasi.SiswaTopAppBar
 import kotlinx.coroutines.launch
 
 object DestinasiEntry: DestinasiNavigasi{
@@ -47,9 +49,9 @@ fun EntrySiswaScreen(
     Scaffold (
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            SiswaTopBar(
-                title = stringResource(DestinasiEntry.titleRes),
-                canNavigateBack = true,
+            SiswaTopAppBar(
+               title = stringResource(id = DestinasiEntry.titleRes),
+                canNavgateBack = true,
                 scrollBehavior = scrollBehavior
             )
         }){innerPadding ->

@@ -30,6 +30,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.roomdata.Data.Siswa
 import com.example.roomdata.R
@@ -37,6 +38,7 @@ import com.example.roomdata.model.EntryViewModel
 import com.example.roomdata.model.Homeviewmodel
 import com.example.roomdata.model.PenyediaViewModel
 import com.example.roomdata.navigasi.DestinasiNavigasi
+import com.example.roomdata.navigasi.SiswaTopAppBar
 
 object DestinasiHome : DestinasiNavigasi{
     override val route = "home"
@@ -46,7 +48,7 @@ object DestinasiHome : DestinasiNavigasi{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToItem: () -> Unit,
+    navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: Homeviewmodel = viewModel(factory = PenyediaViewModel.Factory)
 ){
@@ -55,9 +57,9 @@ fun HomeScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SiswaTopAppBar(
-                title = stringResource(DestinasiHome.titleRes),
+                title = stringResource(id = DestinasiHome.titleRes),
                 canNavigateBack = false,
-                scrollBehavior = scrollBehavior,
+                scrollBevaior = scrollBehavior
             )
         },
         floatingActionButton = {
