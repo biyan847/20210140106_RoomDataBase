@@ -14,7 +14,7 @@ class Homeviewmodel (private val repositoriSiswa: RepositoriSiswa): ViewModel(){
     companion object{
         private const val TIMEOUT_MILLIS = 5_000L
     }
-    val homeUIStat: StateFlow<HomeUiState> = repositoriSiswa.getAllSiswaStream().filterNotNull()
+    val homeUIState: StateFlow<HomeUiState> = repositoriSiswa.getAllSiswaStream().filterNotNull()
         .map { HomeUiState(listSiswa = it.toList()) }
         .stateIn(scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),

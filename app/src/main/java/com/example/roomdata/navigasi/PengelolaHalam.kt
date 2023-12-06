@@ -1,6 +1,6 @@
 package com.example.roomdata.navigasi
 
-import android.icu.text.CaseMap.Title
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -40,10 +40,12 @@ fun SiswaTopAppBar(
         scrollBehavior = scrollBevaior,
         navigationIcon = {
             if (canNavigateBack){
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(id = R.string.back)
-                )
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back)
+                    )
+                }
             }
         }
     )
