@@ -30,7 +30,7 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() 
     }
 
 }
-    /** status ui untuk siswa */
+/** status ui untuk siswa */
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
     val isEntryValid: Boolean = false
