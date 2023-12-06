@@ -23,7 +23,7 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() 
             UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validationInput())
     }
 
-    suspend fun SaveSiswa(){
+    suspend fun savesiswa(){
         if (validationInput()){
             repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
         }
