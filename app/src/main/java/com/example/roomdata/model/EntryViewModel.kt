@@ -1,11 +1,15 @@
 package com.example.roomdata.model
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.roomdata.repositori.RepositoriSiswa
 
 class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() {
-
-
+    /** berisi status siswa saat ini*/
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+        private set
 
 }
     /** status ui untuk siswa */
