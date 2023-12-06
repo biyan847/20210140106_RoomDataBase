@@ -51,8 +51,9 @@ fun EntrySiswaScreen(
         topBar = {
             SiswaTopAppBar(
                title = stringResource(id = DestinasiEntry.titleRes),
-                canNavgateBack = true,
-                scrollBehavior = scrollBehavior
+                canNavigateBack = true,
+                scrollBevaior = scrollBehavior
+
             )
         }){innerPadding ->
         EntrySiswaBoddy(
