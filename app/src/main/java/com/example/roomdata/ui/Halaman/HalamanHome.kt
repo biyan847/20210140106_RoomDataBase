@@ -1,5 +1,6 @@
 package com.example.roomdata.ui.Halaman
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,6 +51,7 @@ object DestinasiHome : DestinasiNavigasi {
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
+    onDetailClick: (Int) -> Unit = {},
     viewModel: Homeviewmodel = viewModel(factory = PenyediaViewModel.Factory)
 ){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -76,7 +78,9 @@ fun HomeScreen(
         BodyHome(itemSiswa = uiStateSiswa.listSiswa,
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxSize())
+                .fillMaxSize(),
+        onSiswaClick = onDetailClick
+        )
     }
 }
 
@@ -84,7 +88,8 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSiswaClick:(Int) -> Unit= { }
 ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -99,14 +104,16 @@ fun BodyHome(
         } else {
             ListSiswa(
                 itemSiswa = itemSiswa,
-                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small)))
+                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small)),
+            onItemClick = {onSiswaClick(it.id)}
+            )
         }
     }
 }
 
 @Composable
 fun ListSiswa(
-    itemSiswa: List<Siswa>,
+    itemSiswa: List<Siswa>,onItemClick:(Siswa) -> Unit,
     modifier: Modifier = Modifier
 ){
     LazyColumn(modifier = Modifier){
@@ -115,7 +122,8 @@ fun ListSiswa(
             DataSiswa(
                 siswa = person,
                 modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.padding_small)))
+                    .padding(dimensionResource(id = R.dimen.padding_small)).clickable { onItemClick(person) })
+
         }
     }
 }
@@ -123,7 +131,8 @@ fun ListSiswa(
 @Composable
 fun DataSiswa(
     siswa: Siswa,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+
 ){
     Card(
         modifier = modifier,
